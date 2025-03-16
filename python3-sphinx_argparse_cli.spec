@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	tests	# unit tests
+%bcond_with	tests	# unit tests
 
 Summary:	Render CLI arguments (sub-commands friendly) defined by argparse module
 Name:		python3-sphinx_argparse_cli
@@ -37,7 +37,11 @@ and mdpo.
 %py3_build_pyproject
 
 %if %{with tests}
-%{__python3} -m pytest tests
+%{__python3} -m zipfile -e build-3/*.whl build-3-test
+# use explicit plugins list for reliable builds (delete PYTEST_PLUGINS if empty)
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
+PYTEST_PLUGINS= \
+%{__python3} -m pytest -o pythonpath="$PWD/build-3-test" tests
 %endif
 
 %install
