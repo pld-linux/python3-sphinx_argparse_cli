@@ -5,7 +5,7 @@
 Summary:	Render CLI arguments (sub-commands friendly) defined by argparse module
 Name:		python3-sphinx_argparse_cli
 Version:	1.19.0
-Release:	3
+Release:	4
 License:	MIT
 Group:		Libraries/Python
 Source0:	https://files.pythonhosted.org/packages/source/s/sphinx-argparse-cli/sphinx_argparse_cli-%{version}.tar.gz
